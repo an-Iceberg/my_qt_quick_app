@@ -4,3 +4,4 @@ Qt Quick and QML with python.
 Learning materials:
 - https://doc.qt.io/qtforpython-6/tutorials/qmlintegration/qmlintegration.html
 - https://www.pythonguis.com/tutorials/pyside6-qml-qtquick-python-application/
+- https://www.pythonguis.com/tutorials/pyside6-qml-animations-transformations/
