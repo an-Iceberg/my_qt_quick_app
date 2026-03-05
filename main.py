@@ -1,22 +1,10 @@
 import sys
 
-from PySide6.QtCore import QObject, Slot
 from PySide6.QtGui import QGuiApplication
-from PySide6.QtQml import QmlElement, QQmlApplicationEngine
-from PySide6.QtQuickControls2 import QQuickStyle
+from PySide6.QtQml import QQmlApplicationEngine
 
+# from PySide6.QtQuickControls2 import QQuickStyle
 import bridge
-
-# QML_IMPORT_NAME = "backend"
-# QML_IMPORT_MAJOR_VERSION = 1
-
-
-# @QmlElement
-# class Bridge(QObject):
-#     @Slot()
-#     def fun(self):
-#         print("hello from the frontend")
-
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)

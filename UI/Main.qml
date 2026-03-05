@@ -10,6 +10,7 @@ ApplicationWindow
 {
   id: main
 
+  title: "My Qt Quick App"
   width: 800
   height: 600
   visible: true
