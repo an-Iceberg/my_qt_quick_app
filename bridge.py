@@ -9,4 +9,4 @@ QML_IMPORT_MAJOR_VERSION = 1
 class Bridge(QObject):
     @Slot(str)
     def fun(self, string: str):
-        print(f'hello "{string}"')
+        print(f'hello from the backend "{string}"')

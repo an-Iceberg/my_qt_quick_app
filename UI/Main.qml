@@ -28,10 +28,8 @@ ApplicationWindow
     Button
     {
       text: "Click me!"
-      onClicked:
-      {
-        bridge.fun(text_input.text)
-      }
+
+      onClicked: { bridge.fun(text_input.text) }
     }
 
     TextField
@@ -40,9 +38,20 @@ ApplicationWindow
 
       placeholderText: "Enter something here!"
 
-      onTextChanged:
+      onTextChanged: { console.log(text_input.text) }
+    }
+
+    Rectangle
+    {
+      color: Qt.rgba(1, 1, 0, 1)
+      implicitWidth: other_text.contentWidth
+      implicitHeight: other_text.contentHeight
+
+      Text
       {
-        console.log(text_input.text)
+        id: other_text
+
+        text: `placeholder: ${text_input.placeholderText.split(" ")[0]}`
       }
     }
   }
