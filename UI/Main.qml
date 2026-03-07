@@ -17,10 +17,13 @@ ApplicationWindow
 
   Bridge { id: bridge }
 
-  GridLayout
+  ColumnLayout
   {
-    columns: 2
-    rows: 3
+    anchors
+    {
+      horizontalCenter: parent.horizontalCenter
+      verticalCenter: parent.verticalCenter
+    }
 
     Button
     {
@@ -34,6 +37,13 @@ ApplicationWindow
     TextField
     {
       id: text_input
+
+      placeholderText: "Enter something here!"
+
+      onTextChanged:
+      {
+        console.log(text_input.text)
+      }
     }
   }
 }
