@@ -7,23 +7,24 @@ from PySide6.QtQml import QQmlApplicationEngine
 from backend import Backend
 from bridge import Bridge
 
-app = QGuiApplication(sys.argv)
-# QQuickStyle.setStyle("Material")
-engine = QQmlApplicationEngine()
-# Add the current directory to the import paths and load the main module.
-engine.addImportPath(sys.path[0])
-engine.loadFromModule("UI", "Main")
+if __name__ == "__main__":
+    app = QGuiApplication(sys.argv)
+    # QQuickStyle.setStyle("Material")
+    engine = QQmlApplicationEngine()
+    # Add the current directory to the import paths and load the main module.
+    engine.addImportPath(sys.path[0])
+    engine.loadFromModule("UI", "Main")
 
-backend = Backend()
-bridge: Bridge = Bridge(backend)  # type: ignore
+    backend = Backend()
+    bridge: Bridge = Bridge(backend)  # type: ignore
 
-if not engine.rootObjects()[0].setProperty("bridge", bridge):
-    print("ERROR: could not connect the backend to the frontend")
-    sys.exit(-1)
+    if not engine.rootObjects()[0].setProperty("bridge", bridge):
+        print("ERROR: could not connect the backend to the frontend")
+        sys.exit(-1)
 
-if not engine.rootObjects():
-    sys.exit(-1)
+    if not engine.rootObjects():
+        sys.exit(-1)
 
-exit_code = app.exec()
-del engine
-sys.exit(exit_code)
+    exit_code = app.exec()
+    del engine
+    sys.exit(exit_code)

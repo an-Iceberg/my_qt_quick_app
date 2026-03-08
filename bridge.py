@@ -23,10 +23,10 @@ class Bridge(QObject):
         self.timer.timeout.connect(self.update_time)
         self.timer.start()
 
-    def update_time(self):
+    def update_time(self) -> None:
         local_time = strftime("%H:%M:%S", localtime())
         self.timeUpdated.emit(local_time)
 
     @Slot(str)
-    def fun(self, string: str):
+    def fun(self, string: str) -> None:
         print(f'hello from the backend "{string}"')
