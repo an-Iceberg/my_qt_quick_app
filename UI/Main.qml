@@ -8,14 +8,28 @@ import bridge 1.0
 
 ApplicationWindow
 {
-  id: main
+  id: app
+  visible: true
 
   title: "My Qt Quick App"
   width: 800
   height: 600
-  visible: true
 
-  Bridge { id: bridge }
+  property QtObject bridge
+  property string current_time: "00:00:00"
+
+  // Bridge { id: bridge }
+
+  Connections
+  {
+    target: app.bridge
+
+    function onTimeUpdated(time)
+    {
+      // console.log(`time: ${time}`)
+      app.current_time = time
+    }
+  }
 
   ColumnLayout
   {
@@ -44,14 +58,16 @@ ApplicationWindow
     Rectangle
     {
       color: Qt.rgba(1, 1, 0, 1)
-      implicitWidth: other_text.contentWidth
-      implicitHeight: other_text.contentHeight
+      implicitWidth: clock.contentWidth
+      implicitHeight: clock.contentHeight
+      border { color: "red"; width: 2 }
 
       Text
       {
-        id: other_text
+        id: clock
 
-        text: `placeholder: ${text_input.placeholderText.split(" ")[0]}`
+        text: app.current_time
+        // text: `placeholder: ${text_input.placeholderText.split(" ")[0]}`
       }
     }
   }
