@@ -12,8 +12,8 @@ ApplicationWindow
   visible: true
 
   title: "My Qt Quick App"
-  width: 800
-  height: 600
+  width: 400
+  height: 400
 
   // menuBar: MenuBar
   // {
@@ -55,7 +55,8 @@ ApplicationWindow
 
   ColumnLayout
   {
-    anchors.fill: parent
+    // anchors.fill: parent
+    Layout.alignment: Qt.AlignCenter
 
     Button
     {
@@ -76,21 +77,36 @@ ApplicationWindow
       onTextEdited: { console.log(text_field.text) }
     }
 
-    Rectangle
+    RowLayout
     {
       Layout.alignment: Qt.AlignHCenter
-      color: Qt.rgba(1, 1, 0, 1)
-      implicitWidth: clock.contentWidth
-      implicitHeight: clock.contentHeight
-      border { color: "red"; width: 2 }
-      radius: 4
 
       Text
       {
-        id: clock
+        text: "Clock:"
+        color: "white"
+        font.underline: true
+      }
 
-        text: app.current_time
-        // text: `placeholder: ${text_input.placeholderText.split(" ")[0]}`
+      Rectangle
+      {
+        color: Qt.rgba(0.5, 0, 1, 1)
+        implicitWidth: clock.contentWidth + 10
+        implicitHeight: clock.contentHeight + 5
+        border { color: "magenta"; width: 2 }
+        radius: 4
+
+        Text
+        {
+          id: clock
+
+          anchors.fill: parent
+          horizontalAlignment: Text.AlignHCenter
+          verticalAlignment: Text.AlignVCenter
+          color: "beige"
+          text: app.current_time
+          // text: `placeholder: ${text_input.placeholderText.split(" ")[0]}`
+        }
       }
     }
   }
