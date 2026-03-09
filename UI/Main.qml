@@ -1,7 +1,7 @@
-import QtQuick
-import QtQuick.Controls
-import QtQuick.Layouts
-import QtQuick.Window
+import QtQuick 2
+import QtQuick.Controls 2
+import QtQuick.Layouts 2
+import QtQuick.Window 2
 
 // import backend 1.0
 import bridge 1.0
@@ -15,6 +15,32 @@ ApplicationWindow
   width: 800
   height: 600
 
+  // menuBar: MenuBar
+  // {
+  //   Menu
+  //   {
+  //     title: "File"
+  //     Action { text: "New" }
+  //     Action { text: "Open" }
+  //     Action { text: "Save" }
+  //     Action { text: "Save as…" }
+  //     MenuSeparator {}
+  //     Action { text: "Quit" }
+  //   }
+  //   Menu
+  //   {
+  //     title: "Edit"
+  //     Action { text: "Cut" }
+  //     Action { text: "Copy" }
+  //     Action { text: "Paste" }
+  //   }
+  //   Menu
+  //   {
+  //     title: "Help"
+  //     Action { text: "About" }
+  //   }
+  // }
+
   property QtObject bridge
   property string current_time: "00:00:00"
 
@@ -24,43 +50,40 @@ ApplicationWindow
   {
     target: app.bridge
 
-    function onTimeUpdated(time)
-    {
-      // console.log(`time: ${time}`)
-      app.current_time = time
-    }
+    function onTimeUpdated(time: string) { app.current_time = time }
   }
 
   ColumnLayout
   {
-    anchors
-    {
-      horizontalCenter: parent.horizontalCenter
-      verticalCenter: parent.verticalCenter
-    }
+    anchors.fill: parent
 
     Button
     {
-      text: "Click me!"
+      text: "Say hello from the backend!"
+      Layout.alignment: Qt.AlignHCenter
 
-      onClicked: { bridge.fun(text_input.text) }
+      onClicked: { app.bridge.hello_backend(text_field.text) }
     }
 
     TextField
     {
-      id: text_input
+      id: text_field
 
+      maximumLength: 15
+      Layout.alignment: Qt.AlignHCenter
       placeholderText: "Enter something here!"
 
-      onTextChanged: { console.log(text_input.text) }
+      onTextEdited: { console.log(text_field.text) }
     }
 
     Rectangle
     {
+      Layout.alignment: Qt.AlignHCenter
       color: Qt.rgba(1, 1, 0, 1)
       implicitWidth: clock.contentWidth
       implicitHeight: clock.contentHeight
       border { color: "red"; width: 2 }
+      radius: 4
 
       Text
       {
@@ -71,4 +94,19 @@ ApplicationWindow
       }
     }
   }
+
+  // footer:  RowLayout
+  // {
+  //   anchors.fill: parent
+  //   Label { text: "Read Only" }
+  // }
+
+  // statusBar: StatusBar
+  // {
+  //   RowLayout
+  //   {
+  //     anchors.fill: parent
+  //     Label { text: "Read Only" }
+  //   }
+  // }
 }

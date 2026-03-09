@@ -16,7 +16,10 @@ if __name__ == "__main__":
     engine.loadFromModule("UI", "Main")
 
     backend = Backend()
-    bridge: Bridge = Bridge(backend)  # type: ignore
+    # Bridge acting as a [mediator](https://refactoring.guru/design-patterns/mediator)
+    # and [adapter](https://refactoring.guru/design-patterns/adapter)
+    # between the front- and backend.
+    bridge = Bridge(backend)  # type: ignore
 
     if not engine.rootObjects()[0].setProperty("bridge", bridge):
         print("ERROR: could not connect the backend to the frontend")

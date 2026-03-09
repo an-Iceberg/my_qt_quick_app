@@ -12,6 +12,8 @@ QML_IMPORT_MAJOR_VERSION = 1
 @QmlElement
 class Bridge(QObject):
     timeUpdated = Signal(str, arguments=["time"])
+    backend: Backend
+    timer: QTimer
 
     def __init__(self, backend: Backend) -> None:
         super().__init__()
@@ -28,5 +30,5 @@ class Bridge(QObject):
         self.timeUpdated.emit(local_time)
 
     @Slot(str)
-    def fun(self, string: str) -> None:
-        print(f'hello from the backend "{string}"')
+    def hello_backend(self, string: str) -> None:
+        self.backend.hello(string)
