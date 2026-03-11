@@ -17,7 +17,6 @@ if __name__ == "__main__":
 
     backend = Backend()
     # Bridge acting as a [mediator](https://refactoring.guru/design-patterns/mediator)
-    # and [adapter](https://refactoring.guru/design-patterns/adapter)
     # between the front- and backend.
     bridge = Bridge(backend)  # type: ignore
 
