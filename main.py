@@ -24,6 +24,9 @@ if __name__ == "__main__":
         print("ERROR: could not connect the backend to the frontend")
         sys.exit(-1)
 
+    # This prevents the frontend from showing 00:00:00 for a split second.
+    bridge.update_time()
+
     if not engine.rootObjects():
         sys.exit(-1)
 
