@@ -5,5 +5,6 @@ Learning materials:
 - https://doc.qt.io/qtforpython-6/tutorials/qmlintegration/qmlintegration.html
 - https://www.pythonguis.com/tutorials/pyside6-qml-qtquick-python-application/
 - https://www.pythonguis.com/tutorials/pyside6-qml-animations-transformations/
+- https://forum.qt.io/topic/47844/solved-column-vs-columnlayout-bug-or-feature/2?_=1773731066409
 
 [colors](https://johndecember.com/html/spec/colorsvg.html)

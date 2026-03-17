@@ -21,13 +21,12 @@ class Bridge(QObject):
         self.backend = backend
 
         self.timer = QTimer()
-        self.timer.setInterval(100)
+        self.timer.setInterval(200)
         self.timer.timeout.connect(self.update_time)
         self.timer.start()
 
     def update_time(self) -> None:
-        local_time = strftime("%H:%M:%S", localtime())
-        self.timeUpdated.emit(local_time)
+        self.timeUpdated.emit(strftime("%H:%M:%S", localtime()))
 
     @Slot(str)
     def hello_backend(self, string: str) -> None:

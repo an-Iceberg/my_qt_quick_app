@@ -53,76 +53,135 @@ ApplicationWindow
     function onTimeUpdated(time: string) { app.current_time = time }
   }
 
-  ColumnLayout
+  header: RowLayout
   {
-    // anchors.fill: parent
-    Layout.alignment: Qt.AlignCenter
+    spacing: 5
 
-    Button
+    Text
     {
-      text: "Say hello from the backend!"
-      Layout.alignment: Qt.AlignHCenter
-
-      onClicked: { app.bridge.hello_backend(text_field.text) }
+      text: "Header"
+      style: Text.Outline
+      styleColor: "white"
+      Layout.preferredWidth: 47
     }
-
-    TextField
+    ComboBox
     {
-      id: text_field
-
-      maximumLength: 15
-      Layout.alignment: Qt.AlignHCenter
-      placeholderText: "Enter something here!"
-
-      onTextEdited: { console.log(text_field.text) }
+      Layout.preferredWidth: 80
+      model: ["First", "Second", "Third"]
     }
+    Text
+    {
+      text: "Header"
+      color: "white"
+      Layout.fillWidth: true
+    }
+    Text
+    {
+      text: "Header"
+      color: "white"
+      Layout.fillWidth: true
+      horizontalAlignment: Text.AlignHCenter
+    }
+    Text
+    {
+      text: "Header"
+      color: "white"
+      Layout.fillWidth: true
+      horizontalAlignment: Text.AlignRight
+    }
+  }
 
+  footer: RowLayout
+  {
+    spacing: 5
+
+    Text { text: "Footer"; color: "white" }
+    Rectangle { Layout.fillWidth: true }
     RowLayout
     {
-      Layout.alignment: Qt.AlignHCenter
-
       Text
       {
         text: "Clock:"
         color: "white"
         font.underline: true
       }
-
-      Rectangle
+      Text
       {
-        color: Qt.rgba(0.5, 0, 1, 1)
-        implicitWidth: clock.contentWidth + 10
-        implicitHeight: clock.contentHeight + 5
-        border { color: "magenta"; width: 2 }
-        radius: 4
-
-        Text
-        {
-          id: clock
-
-          anchors.fill: parent
-          horizontalAlignment: Text.AlignHCenter
-          verticalAlignment: Text.AlignVCenter
-          color: "beige"
-          text: app.current_time
-          // text: `placeholder: ${text_input.placeholderText.split(" ")[0]}`
-        }
+        text: app.current_time
+        color: "white"
       }
     }
   }
 
-  // footer:  RowLayout
-  // {
-  //   anchors.fill: parent
-  //   Label { text: "Read Only" }
-  // }
+  Page
+  {
+    anchors
+    {
+      fill: parent
+      margins: 10
+    }
 
-  // statusBar: StatusBar
-  // {
-  //   RowLayout
-  //   {
-  //     anchors.fill: parent
-  //     Label { text: "Read Only" }
-  //   }
-  // }
+    ColumnLayout
+    {
+      spacing: 10
+
+      Button
+      {
+        text: "Say hello from the backend!"
+        Layout.alignment: Qt.AlignHCenter
+
+        onClicked: { app.bridge.hello_backend(text_field.text) }
+      }
+
+      RowLayout
+      {
+        Layout.alignment: Qt.AlignHCenter
+
+        Text { text: "Name:"; color: "white" }
+        TextField
+        {
+          id: text_field
+
+          maximumLength: 15
+          placeholderText: "Name"
+
+          onTextEdited: { console.log(text_field.text) }
+        }
+      }
+
+      RowLayout
+      {
+        Layout.alignment: Qt.AlignHCenter
+        // anchors.horizontalCenter: parent.horizontalCenter
+
+        Text
+        {
+          text: "Clock:"
+          color: "white"
+          font.underline: true
+        }
+
+        Rectangle
+        {
+          color: Qt.rgba(0.5, 0, 1, 1)
+          implicitWidth: clock.contentWidth + 10
+          implicitHeight: clock.contentHeight + 5
+          border { color: "magenta"; width: 2 }
+          radius: 4
+
+          Text
+          {
+            id: clock
+
+            anchors.fill: parent
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            color: "beige"
+            text: app.current_time
+            // text: `placeholder: ${text_input.placeholderText.split(" ")[0]}`
+          }
+        }
+      }
+    }
+  }
 }
