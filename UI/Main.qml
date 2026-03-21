@@ -156,7 +156,7 @@ ApplicationWindow
 
         Text
         {
-          text: "Clock:"
+          text: "fancy rectangle:"
           color: "white"
           font.underline: true
         }
@@ -164,20 +164,20 @@ ApplicationWindow
         Rectangle
         {
           color: Qt.rgba(0.5, 0, 1, 1)
-          implicitWidth: clock.contentWidth + 10
-          implicitHeight: clock.contentHeight + 5
+          implicitWidth: fancy_rect.contentWidth + 10
+          implicitHeight: fancy_rect.contentHeight + 5
           border { color: "magenta"; width: 2 }
           radius: 4
 
           Text
           {
-            id: clock
+            id: fancy_rect
 
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             color: "beige"
-            text: app.current_time
+            text: "fancy rectangle!"
             // text: `placeholder: ${text_input.placeholderText.split(" ")[0]}`
           }
         }
